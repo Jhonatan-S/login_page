@@ -6,12 +6,20 @@ class CustomPasswordTextFormField extends StatefulWidget {
   final Icon? prefixIcon;
   final Widget? sufixIcon;
   final bool obscureText;
+  final String? helperText;
+  final String? Function(String?)? validator;
+  final TextInputAction? textInputAction;
+  final TextInputType? keyboardType;
 
   const CustomPasswordTextFormField({
     super.key,
     this.prefixIcon,
     this.sufixIcon,
     required this.obscureText,
+    this.helperText,
+    this.validator,
+    this.textInputAction,
+    this.keyboardType
   });
 
   @override
@@ -26,6 +34,10 @@ class _CustomPasswordTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      validator: widget.validator,
+      helperText: widget.helperText,
       hintText: 'Password',
       obscureText: isHidden ? widget.obscureText : false,
       prefixIcon: widget.prefixIcon,
@@ -35,7 +47,10 @@ class _CustomPasswordTextFormFieldState
             isHidden = !isHidden;
           });
         },
-        child: Icon(isHidden ? Icons.visibility : Icons.visibility_off, color: AppColors.greyColor,),
+        child: Icon(
+          isHidden ? Icons.visibility : Icons.visibility_off,
+          color: AppColors.greyColor,
+        ),
       ),
     );
   }

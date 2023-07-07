@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:login/commom/constants/app_colors.dart';
-import 'package:login/pages/sign_in_page/sign_in_page.dart';
+import 'package:login/pages/splash_page/splash_page.dart';
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: SignInPage(),
+      home: const SafeArea(child: SplashPage()),
     );
   }
 }

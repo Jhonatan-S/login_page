@@ -14,6 +14,8 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final EdgeInsets? margin;
   final bool obscureText;
+  final String? helperText;
+  final TextInputType? keyboardType;
 
   const CustomTextFormField({
     super.key,
@@ -23,7 +25,9 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.textInputAction,
     this.margin,
-    required this.obscureText
+    required this.obscureText,
+    this.helperText,
+    this.keyboardType
     
   });
 
@@ -47,16 +51,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           border: Border.all(
               color: AppColors.greyColor, width: 0.3)),
       child: TextFormField(
+        keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,
         style: const TextStyle(color: AppColors.whiteColor),
         textInputAction: widget.textInputAction,
         cursorColor: AppColors.greyColor,
         decoration: InputDecoration(
+          helperText: widget.helperText,
+          helperStyle: AppCustomTextStyle.extraSmallText,
           hintText: widget.hintText,
           hintStyle: AppCustomTextStyle.smallText
               .copyWith(color: AppColors.greyColor),
           prefixIcon: widget.prefixIcon,
-          suffixIcon: widget.sufixIcon
+          suffixIcon: widget.sufixIcon,
+          errorStyle: AppCustomTextStyle.extraSmallText,
         ),
         validator: widget.validator,
         

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class AppColor {
   AppColor._();
 
-  final Gradient gradientBtn = const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter ,colors: [  Color(0xff9C3FE4),  Color(0xffC65647)]);
+  static const Color blackColor = Colors.black;
+  static const Color WhiteColor = Color(0XffEFEFEF);
+  static const Color greyColor = Color(0xffA4A4A4);
 
-  final Gradient gradientInput = const LinearGradient(colors: [Color(0xff53495A), Color(0xff281E28)]);
+  static final List<Color> gradientBtn =  [Color(0xff9C3FE4), Color(0xffC65647)];
 
+  static final List<Color> gradientInput =  [Color.fromARGB(255, 119, 110, 125), Color(0xff281E28)];
 }

@@ -1,48 +1,66 @@
 
-import 'package:flutter/material.dart';
-import '../constants/colors/colors.dart';
-import '../constants/custom_style_text/custom_style_text.dart';
 
-class CustomFormField extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+import '../commom/constants/app_colors.dart';
+import '../commom/constants/app_custom_text.dart';
+
+class CustomTextFormField extends StatefulWidget {
 
   final String? hintText;
   final Icon? prefixIcon;
-  final EdgeInsetsGeometry? margin;
+  final Widget? sufixIcon;
+  final String? Function(String?)? validator;
+  final TextInputAction? textInputAction;
+  final EdgeInsets? margin;
+  final bool obscureText;
 
-  const CustomFormField({
+  const CustomTextFormField({
     super.key,
     required this.hintText,
     this.prefixIcon,
-    this.margin
-
+    this.sufixIcon,
+    this.validator,
+    this.textInputAction,
+    this.margin,
+    required this.obscureText
+    
   });
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: margin,
+      margin: const EdgeInsets.symmetric(vertical: 5),
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xCFA4A4A4)),
-        borderRadius: BorderRadius.circular(10),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomCenter,
-          colors: AppColor.gradientInput,
-        ),
-      ),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: AppColors.darkGradient,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+              color: AppColors.greyColor, width: 0.3)),
       child: TextFormField(
-        textInputAction: TextInputAction.next,
-        autocorrect: false,
-        obscureText: false,
-        textCapitalization: TextCapitalization.none,
-        style: const TextStyle(color: AppColor.WhiteColor),
+        obscureText: widget.obscureText,
+        style: const TextStyle(color: AppColors.whiteColor),
+        textInputAction: widget.textInputAction,
+        cursorColor: AppColors.greyColor,
         decoration: InputDecoration(
-          
-          hintText: hintText,
-          hintStyle: AppCustomStyleText.smallText.copyWith(color: AppColor.greyColor),
-          prefixIcon: prefixIcon
+          hintText: widget.hintText,
+          hintStyle: AppCustomTextStyle.smallText
+              .copyWith(color: AppColors.greyColor),
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.sufixIcon
         ),
+        validator: widget.validator,
+        
+        
       ),
     );
   }

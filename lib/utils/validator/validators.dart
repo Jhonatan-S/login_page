@@ -39,3 +39,18 @@ class Validator {
   }
 
 }
+
+
+class ValidatePasswordSingIn  {
+  ValidatePasswordSingIn._();
+  static String? validatePassword(value) {
+   
+
+    if (value == null || value.isEmpty) {
+      return 'Required field';
+    } 
+
+    return null;
+  }
+
+}

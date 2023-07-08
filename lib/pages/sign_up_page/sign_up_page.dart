@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login/commom/constants/app_colors.dart';
 import 'package:login/commom/constants/app_custom_text.dart';
 import 'package:login/commom/constants/app_images.dart';
-import 'package:login/logic/validator/validators.dart';
+import 'package:login/utils/validator/validators.dart';
 import 'package:login/widgets/custom_password_text_form_field.dart';
 
 import '../../widgets/custom_text_form_field.dart';
@@ -38,7 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: MediaQuery.sizeOf(context).height * 0.7,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(99, 54, 0, 96),
+                      color: AppColors.backgroundColor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -175,7 +175,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ],
                             ),
                             const SizedBox(
-                              height: 10,
+                              height: 50,
                             ),
                           ],
                         ),

@@ -5,7 +5,6 @@ class Validator {
 
 
   static String? validateName(value) {
-    final conditionName = RegExp(r"^[A-Z]'?[a-zA-Z]+(-[a-zA-Z]+)?$");
 
     if (value == null || value.isEmpty) {
       return 'Required field';

@@ -10,6 +10,7 @@ class CustomPasswordTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
+  final Function(String)? onChanged;
 
   const CustomPasswordTextFormField({
     super.key,
@@ -19,7 +20,8 @@ class CustomPasswordTextFormField extends StatefulWidget {
     this.helperText,
     this.validator,
     this.textInputAction,
-    this.keyboardType
+    this.keyboardType,
+    this.onChanged
   });
 
   @override
@@ -34,6 +36,7 @@ class _CustomPasswordTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      onChanged: widget.onChanged,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       validator: widget.validator,

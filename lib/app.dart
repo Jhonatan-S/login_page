@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/pages/sign_in_page/sign_in_page.dart';
-import 'package:login/pages/splash_page/splash_page.dart';
+import 'package:login/pages/sign_up_page/sign_up_page.dart';
+
 
 
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SafeArea(child: SignInPage()),
+      home: const SafeArea(child: SignUpPage()),
     );
   }
 }

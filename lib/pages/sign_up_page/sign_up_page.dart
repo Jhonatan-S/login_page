@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:login/commom/constants/app_colors.dart';
 import 'package:login/commom/constants/app_custom_text.dart';
@@ -19,6 +21,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController textInputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,39 +74,60 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: Column(
                                   children: [
                                     const SizedBox(height: 20),
-                                    const CustomTextFormField(
+                                    CustomTextFormField(
+                                      onChanged: (value) {
+                                        if (value.length == 1 ||
+                                            value.length == 6) {
+                                          setState(() {
+                                            _formKey.currentState?.validate();
+                                          });
+                                        }
+                                      },
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       hintText: 'Username',
                                       validator: Validator.validateName,
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.person,
                                         color: AppColors.greyColor,
                                       ),
                                     ),
                                     const SizedBox(height: 20),
-                                    const CustomTextFormField(
+                                    CustomTextFormField(
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _formKey.currentState?.validate();
+                                        });
+                                      },
                                       keyboardType: TextInputType.emailAddress,
                                       textInputAction: TextInputAction.next,
                                       validator: Validator.validateEmail,
                                       hintText: 'Email',
                                       obscureText: false,
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.email,
                                         color: AppColors.greyColor,
                                       ),
                                     ),
                                     const SizedBox(height: 20),
-                                    const CustomPasswordTextFormField(
+                                     CustomPasswordTextFormField(
+                                      onChanged: (value) {
+                                        if (value.length == 1 ||
+                                            value.length == 8) {
+                                          setState(() {
+                                            _formKey.currentState?.validate();
+                                          });
+                                        }
+                                      },
                                       keyboardType: TextInputType.number,
                                       textInputAction: TextInputAction.done,
                                       validator: Validator.validatePassword,
                                       obscureText: true,
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.key,
                                         color: AppColors.greyColor,
                                       ),
-                                      sufixIcon: Icon(
+                                      sufixIcon: const Icon(
                                         Icons.visibility,
                                         color: AppColors.greyColor,
                                       ),

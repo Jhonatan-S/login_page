@@ -16,6 +16,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool obscureText;
   final String? helperText;
   final TextInputType? keyboardType;
+  final Function(String)? onChanged;
 
   const CustomTextFormField({
     super.key,
@@ -27,7 +28,8 @@ class CustomTextFormField extends StatefulWidget {
     this.margin,
     required this.obscureText,
     this.helperText,
-    this.keyboardType
+    this.keyboardType,
+    this.onChanged,
     
   });
 
@@ -51,6 +53,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           border: Border.all(
               color: AppColors.greyColor, width: 0.3)),
       child: TextFormField(
+        onChanged: widget.onChanged,
         keyboardType: widget.keyboardType,
         obscureText: widget.obscureText,
         style: const TextStyle(color: AppColors.whiteColor),

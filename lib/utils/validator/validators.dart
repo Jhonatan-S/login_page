@@ -9,9 +9,10 @@ class Validator {
 
     if (value == null || value.isEmpty) {
       return 'Required field';
-    } else if (value == null || !value.contains(conditionName)) {
+    } else if (value == null || value.toString().length < 5) {
       return 'Invalid name';
     }
+  
     return null;
   }
 
@@ -32,7 +33,7 @@ class Validator {
     if (value == null || value.isEmpty) {
       return 'Required field';
     } else if (value == null || value.toString().length < 6) {
-      return 'Must have at least 6 characteres';
+      return 'Must have at least 8 characteres';
     }
 
     return null;
